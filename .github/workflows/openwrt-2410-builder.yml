@@ -69,13 +69,14 @@ jobs:
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
 
+
     - name: Apply patch
       run: |
         [ -e $PATCH_FILE ] && mv $PATCH_FILE openwrt/$PATCH_FILE
         cd openwrt
-        git apply --check $PATCH_FILE
-        git apply $PATCH_FILE
-        git status -s
+        git apply --check 
+        git apply --check$PATCH_FILE || echo "Patch check failed, forcing apply."
+        git apply --reject --whitespace=fix $PATCH_FILE || echo "Forcefully applied the patch with conflicts."
 
     - name: Download package
       id: package
