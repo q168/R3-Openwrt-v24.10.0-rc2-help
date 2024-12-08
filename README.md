@@ -30,6 +30,7 @@ A template for building OpenWrt with GitHub Actions
 
 - [OpenWrt](https://github.com/openwrt/openwrt)
 - [X-Wrt](https://github.com/x-wrt/x-wrt)
+- AlexPfaltz/MiR3_custom_firmware
 
 ## License
 
